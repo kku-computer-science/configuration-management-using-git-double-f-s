@@ -3,12 +3,32 @@ import java.util.Scanner;
 import java.util.Arrays;
 public class Main {
 
-    public static void BubbleSort(int[] data) {
-        // Bubble Sort Algorithm
-        System.out.println("Buble Sort not implemented yet.");
+    public static void bubbleSort(int[] data) {
+        int i, j, temp;
+        boolean swapped;
+        int n = data.length;
+        for (i = 0; i < n - 1; i++) {
+            swapped = false;
+            for (j = 0; j < n - i - 1; j++) {
+                if (data[j] > data[j + 1]) {
+                    
+                    // Swap arr[j] and arr[j+1]
+                    temp = data[j];
+                    data[j] = data[j + 1];
+                    data[j + 1] = temp;
+                    swapped = true;
+                }
+            }
+
+            // If no two elements were
+            // swapped by inner loop, then break
+            if (swapped == false)
+                break;
+        }
+        printArray(data);
     }
 
-    public static void QuickSort(int[] data, int low, int high) {
+    public static void quickSort(int[] data, int low, int high) {
         // Quick Sort Algorithm
         System.out.println("Quick Sort not implemented yet.");
     }
