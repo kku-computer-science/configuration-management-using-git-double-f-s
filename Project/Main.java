@@ -29,8 +29,34 @@ public class Main {
     }
 
     public static void quickSort(int[] data, int low, int high) {
-        // Quick Sort Algorithm
-        System.out.println("Quick Sort not implemented yet.");
+        if (low < high) {
+            int pivot = partition(data, low, high);
+
+            // recersive
+            quickSort(data, low, pivot - 1);
+            quickSort(data, pivot + 1, high);
+        }
+    }
+
+    public static int partition(int[] data, int low, int high) {
+        int pivot = data[high];
+
+        int i = low - 1;
+
+        for (int j = low; j <= high - 1; j++) {
+            if (data[j] < pivot) {
+                i++;
+                // swap data[i] and data[j]
+                int tmp = data[i];
+                data[i] = data[j];
+                data[j] = tmp;
+            }
+        }
+        // swap data[i+1] and data[high]
+        int tmp = data[i+1];
+        data[i+1] = data[high];
+        data[high] = tmp;
+        return i + 1;
     }
 
     public static void printArray(int[] data) {
@@ -83,6 +109,7 @@ public class Main {
                 bubbleSort(temp);
             } else if (choice.equals("2")) {
                 quickSort(temp, 0, temp.length - 1);
+                printArray(temp);
             } else if (choice.equals("0")) {
                 break;
             }
